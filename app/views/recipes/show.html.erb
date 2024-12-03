@@ -1,0 +1,16 @@
+<%= turbo_stream_from 'recipe-stream' %>
+<%= turbo_frame_tag @recipe do %>
+  <div class="container">
+    <p style="color: green"><%= notice %></p>
+    <% if @recipe.content.present? %>
+      <%= render @recipe %>
+    <% else %>
+      <h3>Generating recipe...</h3>
+    <% end %>
+    <div>
+      <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
+      <%= link_to "Back to recipes", recipes_path %>
+      <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+    </div>
+  </div>
+<% end %>
